@@ -1,18 +1,45 @@
 <?php
+    $back = "<p><a href=\"javascript: history.back()\">Вернуться назад</a></p>";
+
     if(!empty($_POST['saveName']) and !empty($_POST['saveMail']) ){
-        var_dump(1);
-//        $db = mysql_connect("mysql_host", "mysql_user", "mysql_password") 
-//        or die("Could not connect : " . mysql_error()); //подключение к серверу БД
-//
-//        mysql_select_db("my_database") or die("Could not select database"); //Выбор базы данных
-//
-//        $query = 'INSERT INTO table_name (name, email) VALUES ($_POST['name'], $POST['email'])';
-//        mysql_query($query); //добавление имени и мыла
-//
-//        mysql_close($db); //закрытие соединения
+       $saveName = trim(strip_tags($_POST['saveName']));
+	   $saveMail = trim(strip_tags($_POST['saveMail']));
+       $saveNewsType = trim(strip_tags($_POST['saveNewsType']));
+        
+//        phpinfo();
+        $host = "localhost";
+        $user = "root";
+        $password = "toor";
+        $db = "subscribeinfo";
+        $charset = 'utf8';
+        
+        $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+        $opt = [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+        ];
+        $pdo = new PDO($dsn, $user, $password, $opt);
+        
+                
+        $sql =  'INSERT INTO `emails` (`user_name`, `user_email`, `news_type`) VALUES (:saveName, :saveMail, :saveNewsType)';
+        
+        $statement = $pdo->prepare($sql);
+        
+        $statement->bindValue(':saveName', $saveName);
+        $statement->bindValue(':saveMail', $saveMail);
+        $statement->bindValue(':saveNewsType', $saveNewsType);
+
+        $inserted = $statement->execute();
+
+        echo             
+            'Поздравляем, вы успешно подписаны!'.
+            
+            $back;
+
     }
     else {
         var_dump(2);
     }
-?>
+
 ?>

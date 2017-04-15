@@ -38,8 +38,11 @@
                 Ваша почта
                 <input type="text" name="saveMail">
                 <p>Какие новости вас интересуют?</p>
-                <input type="checkbox" id="new_places"><label for="new_places">Новые люди и места</label>
-                <input type="checkbox" id="new_functions"><label for="new_functions">Новый функционал приложения</label>
+                <select class="choose_news" name="saveNewsType">
+                    <option value="all">Все новости</option>
+                    <option value="new people and places">Новые люди и места</option>
+                    <option value="new features">Новый функционал приложения</option>
+                </select>
                 <input type="submit" value="Подписаться">
             </form>
         </div>   
@@ -87,12 +90,5 @@
 //       }
 //    }
 
-    //для сохранения информации о подписке
-
-    if(!empty($_POST['saveName']) and !empty($_POST['saveMail']) ){
-      $saveName = trim(strip_tags($_POST['name']));
-	  $saveMail = trim(strip_tags($_POST['mail']));
-      
-    }
-
+ 
 ?>

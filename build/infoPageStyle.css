@@ -30,7 +30,13 @@ h2 {
     margin-bottom: 5%;
 }
 
-.subscribe input {
-/*    display: block;*/
+.subscribe input,
+.choose_news {
+    display: inline-block;
     color: black;
+/*    width: 90%;*/
+    height: 2vw;
+    margin-bottom: 1vw;
+    border-radius: 5px;
 }
+
