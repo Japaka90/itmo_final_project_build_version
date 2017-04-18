@@ -13,25 +13,24 @@
    
     <h2>О проекте</h2>
 
-    <div class="about_app row">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, soluta, quas. Dolorum iste obcaecati, dolore, corrupti ut enim eum nihil nulla harum illum optio nisi exercitationem ad natus. Quisquam, quaerat? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil obcaecati, maiores optio. Fuga, eos. Possimus aut, quod sunt, quibusdam iusto in perspiciatis dolores expedita deserunt amet tenetur, qui modi nihil.</div>   
+    <div class="about_app row">Данное приложение носит информационный характер и отображает на карте достопримечательности, связанные с известными личностями. <br>
+    На главной странице расположена карта. При первом открытии приложения шапке присутствуют только категории, на которые подразделены известные личности, а также ссылки входа в личный кабинет и регистрации. При клике на одну из категорий в правом верхнем углу карты появляется блок со списком людей, принадлежащий выбранной категории. При клике на любого человека из этого списка, выпадает другой - с перечислением мест, как-то связанных с этим человеком. Кроме того, они сразу же отображаются на карте. При клике на Пржевальского пока что ничего не происходит, просто звучит ржание лошади. При клике на одну из этих меток, рядом с ней появляется небольшое окно с названием и описанием места.</div>   
 
     <div class="row">
+<!--
         <div class="feedback col-md-6">
             <h3>Обратная связь</h3>
             <p>Если у вас есть какие-либо предложения по улучшению проекта или вы хотите добавить информацию о других личностях и местах, где они побывали, пожалуйста, напишите нам.</p>
-<!--
             <form action="post" action="sendmail.php">
                 <input type="text" name="name" value="Ваше имя">
                 <input type="text" name="mail" value="Ваша почта">
                 <input type="textaria" style="width:300px; height:150px;" name="message" value="Ваше сообщение">
                 <input type="submit" name="submitFeedback" value="Отправить">
             </form>
--->
         </div>
+-->
             
-        
-
-        <div class="subscribe col-md-6">
+        <div class="subscribe col-md-6 col-md-offset-3">
             <h3>Подписаться на рассылку</h3>
             <p>Если вы хотете подписаться на рассылку новостей о проекте, пожалуйста, оставьте свои контактные данные.</p>
             <form method="post" onsubmit="return checkForm()" action="subscribe.php">
@@ -57,10 +56,15 @@
         function checkForm () {
 	    var saveName = document.getElementsByName('saveName')[0].value;
 	    var saveMail = document.getElementsByName('saveMail')[0].value;
+        var regExpr = /@/;
 	    if(saveName == '' || saveMail == '')  {
-	        alert('Вы забыли ввести текст.');
+	        alert('Вы должны заполнить все поля');
 	        return false;
 	    }   
+        if(!regExpr.test(saveMail)) {
+            alert('Неправильный формат поля почта');
+	        return false;
+        }
 	    return true;
 	}
 
