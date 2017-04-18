@@ -1,7 +1,6 @@
 <?php
     $back = "<p><a href=\"javascript: history.back()\">Вернуться назад</a></p>";
 
-    if(!empty($_POST['saveName']) and !empty($_POST['saveMail']) ){
        $saveName = trim(strip_tags($_POST['saveName']));
 	   $saveMail = trim(strip_tags($_POST['saveMail']));
        $saveNewsType = trim(strip_tags($_POST['saveNewsType']));
@@ -36,10 +35,5 @@
             'Поздравляем, вы успешно подписаны!'.
             
             $back;
-
-    }
-    else {
-        var_dump(2);
-    }
-
+   
 ?>

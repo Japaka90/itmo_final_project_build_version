@@ -28,11 +28,13 @@
             </form>
 -->
         </div>
+            
+        
 
         <div class="subscribe col-md-6">
             <h3>Подписаться на рассылку</h3>
             <p>Если вы хотете подписаться на рассылку новостей о проекте, пожалуйста, оставьте свои контактные данные.</p>
-            <form method="post" action="subscribe.php">
+            <form method="post" onsubmit="return checkForm()" action="subscribe.php">
                Ваше имя
                 <input type="text" name="saveName">
                 Ваша почта
@@ -51,6 +53,20 @@
 </div>
 
 </div>
+    <script>
+        function checkForm () {
+	    var saveName = document.getElementsByName('saveName')[0].value;
+	    var saveMail = document.getElementsByName('saveMail')[0].value;
+	    if(saveName == '' || saveMail == '')  {
+	        alert('Вы забыли ввести текст.');
+	        return false;
+	    }   
+	    return true;
+	}
+
+    </script>
+
+
 </body>
 </html>
 
